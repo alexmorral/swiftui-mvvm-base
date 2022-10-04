@@ -9,23 +9,55 @@
 /* Begin PBXBuildFile section */
 		8B2FE6F928EB570A00D3DB67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE6F828EB570A00D3DB67 /* AppDelegate.swift */; };
 		8B2FE6FB28EB570A00D3DB67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE6FA28EB570A00D3DB67 /* SceneDelegate.swift */; };
-		8B2FE6FD28EB570A00D3DB67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE6FC28EB570A00D3DB67 /* ViewController.swift */; };
-		8B2FE70028EB570A00D3DB67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2FE6FE28EB570A00D3DB67 /* Main.storyboard */; };
 		8B2FE70328EB570A00D3DB67 /* SwiftUI_MVVM_Base.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE70128EB570A00D3DB67 /* SwiftUI_MVVM_Base.xcdatamodeld */; };
 		8B2FE70528EB570C00D3DB67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2FE70428EB570C00D3DB67 /* Assets.xcassets */; };
 		8B2FE70828EB570C00D3DB67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2FE70628EB570C00D3DB67 /* LaunchScreen.storyboard */; };
+		8B2FE71228EB580300D3DB67 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE71128EB580300D3DB67 /* Route.swift */; };
+		8B2FE71428EB59E700D3DB67 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE71328EB59E700D3DB67 /* ListView.swift */; };
+		8B2FE71628EB59F200D3DB67 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE71528EB59F200D3DB67 /* DetailView.swift */; };
+		8B2FE71C28EB5A3000D3DB67 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE71B28EB5A3000D3DB67 /* ListViewModel.swift */; };
+		8B2FE71E28EB5A3C00D3DB67 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE71D28EB5A3C00D3DB67 /* DetailViewModel.swift */; };
+		8B2FE72228EB651D00D3DB67 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE72128EB651D00D3DB67 /* CoreDataManager.swift */; };
+		8B2FE72528EB77CD00D3DB67 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE72428EB77CD00D3DB67 /* APIClient.swift */; };
+		8B2FE72728EB7A6900D3DB67 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE72628EB7A6900D3DB67 /* APIError.swift */; };
+		8B2FE72A28EB7C0200D3DB67 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE72928EB7C0200D3DB67 /* APIRequest.swift */; };
+		8B2FE72C28EB7C3600D3DB67 /* StarshipsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE72B28EB7C3600D3DB67 /* StarshipsEndpoint.swift */; };
+		8B2FE72F28EB7CA100D3DB67 /* APIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE72E28EB7CA100D3DB67 /* APIParser.swift */; };
+		8B2FE73228EB7D8F00D3DB67 /* StarshipsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE73128EB7D8F00D3DB67 /* StarshipsRepository.swift */; };
+		8B2FE73528EB7EA700D3DB67 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE73428EB7EA700D3DB67 /* Starship.swift */; };
+		8B2FE73A28EB80BC00D3DB67 /* CoreDataCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE73928EB80BC00D3DB67 /* CoreDataCommons.swift */; };
+		8B2FE73D28EB82D500D3DB67 /* APIPaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE73C28EB82D500D3DB67 /* APIPaginatedResult.swift */; };
+		8B2FE74028EB886900D3DB67 /* StarshipsLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE73F28EB886900D3DB67 /* StarshipsLocalDataSource.swift */; };
+		8B2FE74228EB8A0400D3DB67 /* StarshipsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE74128EB8A0400D3DB67 /* StarshipsRemoteDataSource.swift */; };
+		8B2FE74528EB8B4800D3DB67 /* StarshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FE74428EB8B4800D3DB67 /* StarshipViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B2FE6F528EB570A00D3DB67 /* SwiftUI_MVVM_Base.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUI_MVVM_Base.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2FE6F828EB570A00D3DB67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B2FE6FA28EB570A00D3DB67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8B2FE6FC28EB570A00D3DB67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8B2FE6FF28EB570A00D3DB67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B2FE70228EB570A00D3DB67 /* SwiftUI_MVVM_Base.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUI_MVVM_Base.xcdatamodel; sourceTree = "<group>"; };
 		8B2FE70428EB570C00D3DB67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B2FE70728EB570C00D3DB67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B2FE70928EB570C00D3DB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B2FE71128EB580300D3DB67 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		8B2FE71328EB59E700D3DB67 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		8B2FE71528EB59F200D3DB67 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		8B2FE71B28EB5A3000D3DB67 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		8B2FE71D28EB5A3C00D3DB67 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		8B2FE72128EB651D00D3DB67 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8B2FE72428EB77CD00D3DB67 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		8B2FE72628EB7A6900D3DB67 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		8B2FE72928EB7C0200D3DB67 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		8B2FE72B28EB7C3600D3DB67 /* StarshipsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsEndpoint.swift; sourceTree = "<group>"; };
+		8B2FE72E28EB7CA100D3DB67 /* APIParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParser.swift; sourceTree = "<group>"; };
+		8B2FE73128EB7D8F00D3DB67 /* StarshipsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsRepository.swift; sourceTree = "<group>"; };
+		8B2FE73428EB7EA700D3DB67 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
+		8B2FE73928EB80BC00D3DB67 /* CoreDataCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCommons.swift; sourceTree = "<group>"; };
+		8B2FE73C28EB82D500D3DB67 /* APIPaginatedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPaginatedResult.swift; sourceTree = "<group>"; };
+		8B2FE73F28EB886900D3DB67 /* StarshipsLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsLocalDataSource.swift; sourceTree = "<group>"; };
+		8B2FE74128EB8A0400D3DB67 /* StarshipsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsRemoteDataSource.swift; sourceTree = "<group>"; };
+		8B2FE74428EB8B4800D3DB67 /* StarshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +92,150 @@
 			children = (
 				8B2FE6F828EB570A00D3DB67 /* AppDelegate.swift */,
 				8B2FE6FA28EB570A00D3DB67 /* SceneDelegate.swift */,
-				8B2FE6FC28EB570A00D3DB67 /* ViewController.swift */,
-				8B2FE6FE28EB570A00D3DB67 /* Main.storyboard */,
-				8B2FE70428EB570C00D3DB67 /* Assets.xcassets */,
-				8B2FE70628EB570C00D3DB67 /* LaunchScreen.storyboard */,
-				8B2FE70928EB570C00D3DB67 /* Info.plist */,
-				8B2FE70128EB570A00D3DB67 /* SwiftUI_MVVM_Base.xcdatamodeld */,
+				8B2FE72328EB77BE00D3DB67 /* Network */,
+				8B2FE73028EB7D7F00D3DB67 /* Repositories */,
+				8B2FE73328EB7E9000D3DB67 /* CoreData */,
+				8B2FE72028EB650C00D3DB67 /* Managers */,
+				8B2FE71F28EB650100D3DB67 /* Navigation */,
+				8B2FE71928EB5A0500D3DB67 /* Screens */,
+				8B2FE73628EB800F00D3DB67 /* Extensions */,
+				8B2FE71A28EB5A0E00D3DB67 /* Supporting files */,
 			);
 			path = SwiftUI_MVVM_Base;
+			sourceTree = "<group>";
+		};
+		8B2FE71728EB59F700D3DB67 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE71328EB59E700D3DB67 /* ListView.swift */,
+				8B2FE71B28EB5A3000D3DB67 /* ListViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		8B2FE71828EB59FE00D3DB67 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE71528EB59F200D3DB67 /* DetailView.swift */,
+				8B2FE71D28EB5A3C00D3DB67 /* DetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B2FE71928EB5A0500D3DB67 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE74328EB8B1400D3DB67 /* ViewModel */,
+				8B2FE71728EB59F700D3DB67 /* List */,
+				8B2FE71828EB59FE00D3DB67 /* Detail */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8B2FE71A28EB5A0E00D3DB67 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE70928EB570C00D3DB67 /* Info.plist */,
+				8B2FE70428EB570C00D3DB67 /* Assets.xcassets */,
+				8B2FE70628EB570C00D3DB67 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		8B2FE71F28EB650100D3DB67 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE71128EB580300D3DB67 /* Route.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		8B2FE72028EB650C00D3DB67 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE72128EB651D00D3DB67 /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		8B2FE72328EB77BE00D3DB67 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE73B28EB82A800D3DB67 /* API Client */,
+				8B2FE72828EB7BEE00D3DB67 /* Models */,
+				8B2FE72D28EB7C5700D3DB67 /* Endpoints */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8B2FE72828EB7BEE00D3DB67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE73C28EB82D500D3DB67 /* APIPaginatedResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B2FE72D28EB7C5700D3DB67 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE72B28EB7C3600D3DB67 /* StarshipsEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		8B2FE73028EB7D7F00D3DB67 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE73E28EB885600D3DB67 /* Starships */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		8B2FE73328EB7E9000D3DB67 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE73928EB80BC00D3DB67 /* CoreDataCommons.swift */,
+				8B2FE70128EB570A00D3DB67 /* SwiftUI_MVVM_Base.xcdatamodeld */,
+				8B2FE73428EB7EA700D3DB67 /* Starship.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8B2FE73628EB800F00D3DB67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8B2FE73B28EB82A800D3DB67 /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE72428EB77CD00D3DB67 /* APIClient.swift */,
+				8B2FE72928EB7C0200D3DB67 /* APIRequest.swift */,
+				8B2FE72628EB7A6900D3DB67 /* APIError.swift */,
+				8B2FE72E28EB7CA100D3DB67 /* APIParser.swift */,
+			);
+			path = "API Client";
+			sourceTree = "<group>";
+		};
+		8B2FE73E28EB885600D3DB67 /* Starships */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE73128EB7D8F00D3DB67 /* StarshipsRepository.swift */,
+				8B2FE74128EB8A0400D3DB67 /* StarshipsRemoteDataSource.swift */,
+				8B2FE73F28EB886900D3DB67 /* StarshipsLocalDataSource.swift */,
+			);
+			path = Starships;
+			sourceTree = "<group>";
+		};
+		8B2FE74328EB8B1400D3DB67 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8B2FE74428EB8B4800D3DB67 /* StarshipViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +298,6 @@
 			files = (
 				8B2FE70828EB570C00D3DB67 /* LaunchScreen.storyboard in Resources */,
 				8B2FE70528EB570C00D3DB67 /* Assets.xcassets in Resources */,
-				8B2FE70028EB570A00D3DB67 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +308,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2FE73A28EB80BC00D3DB67 /* CoreDataCommons.swift in Sources */,
 				8B2FE70328EB570A00D3DB67 /* SwiftUI_MVVM_Base.xcdatamodeld in Sources */,
-				8B2FE6FD28EB570A00D3DB67 /* ViewController.swift in Sources */,
 				8B2FE6F928EB570A00D3DB67 /* AppDelegate.swift in Sources */,
+				8B2FE72A28EB7C0200D3DB67 /* APIRequest.swift in Sources */,
+				8B2FE74528EB8B4800D3DB67 /* StarshipViewModel.swift in Sources */,
+				8B2FE71428EB59E700D3DB67 /* ListView.swift in Sources */,
+				8B2FE71628EB59F200D3DB67 /* DetailView.swift in Sources */,
+				8B2FE73228EB7D8F00D3DB67 /* StarshipsRepository.swift in Sources */,
+				8B2FE73D28EB82D500D3DB67 /* APIPaginatedResult.swift in Sources */,
+				8B2FE71E28EB5A3C00D3DB67 /* DetailViewModel.swift in Sources */,
+				8B2FE73528EB7EA700D3DB67 /* Starship.swift in Sources */,
+				8B2FE72728EB7A6900D3DB67 /* APIError.swift in Sources */,
+				8B2FE72F28EB7CA100D3DB67 /* APIParser.swift in Sources */,
+				8B2FE74028EB886900D3DB67 /* StarshipsLocalDataSource.swift in Sources */,
+				8B2FE72528EB77CD00D3DB67 /* APIClient.swift in Sources */,
+				8B2FE71228EB580300D3DB67 /* Route.swift in Sources */,
+				8B2FE71C28EB5A3000D3DB67 /* ListViewModel.swift in Sources */,
+				8B2FE74228EB8A0400D3DB67 /* StarshipsRemoteDataSource.swift in Sources */,
+				8B2FE72228EB651D00D3DB67 /* CoreDataManager.swift in Sources */,
+				8B2FE72C28EB7C3600D3DB67 /* StarshipsEndpoint.swift in Sources */,
 				8B2FE6FB28EB570A00D3DB67 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,14 +335,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8B2FE6FE28EB570A00D3DB67 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B2FE6FF28EB570A00D3DB67 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8B2FE70628EB570C00D3DB67 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -293,10 +469,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = EJ2JVCPHS4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SwiftUI_MVVM_Base/Info.plist;
+				INFOPLIST_FILE = "SwiftUI_MVVM_Base/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -321,10 +497,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = EJ2JVCPHS4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SwiftUI_MVVM_Base/Info.plist;
+				INFOPLIST_FILE = "SwiftUI_MVVM_Base/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

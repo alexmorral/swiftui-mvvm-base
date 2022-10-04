@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Starship" representedClassName="Starship" syncable="YES" codeGenerationType="category">
+        <attribute name="cargoCapacity" optional="YES" attributeType="String"/>
+        <attribute name="consumables" optional="YES" attributeType="String"/>
+        <attribute name="costInCredits" optional="YES" attributeType="String"/>
+        <attribute name="crew" optional="YES" attributeType="String"/>
+        <attribute name="hyperdriveRating" optional="YES" attributeType="String"/>
+        <attribute name="length" optional="YES" attributeType="String"/>
+        <attribute name="manufacturer" optional="YES" attributeType="String"/>
+        <attribute name="maxAtmospheringSpeed" optional="YES" attributeType="String"/>
+        <attribute name="mglt" optional="YES" attributeType="String"/>
+        <attribute name="model" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="passengers" optional="YES" attributeType="String"/>
+        <attribute name="starshipClass" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>
