@@ -9,8 +9,11 @@ import Foundation
 import CoreData
 
 protocol StarshipsLocalDataSourceProtocol {
-    func fetchStarships() throws -> [Starship]
-    func fetchStarship(starshipId: String) throws -> Starship
+    var coreDataManager: CoreDataManagerProtocol { get }
+
+    func isStarshipFavorite(id: String) -> Bool
+    func markStarshipFavorite(id: String) throws
+    func unmarkStarshipFavorite(id: String) throws
 }
 
 struct StarshipsLocalDataSource: StarshipsLocalDataSourceProtocol {
@@ -20,18 +23,37 @@ struct StarshipsLocalDataSource: StarshipsLocalDataSourceProtocol {
         self.coreDataManager = coreDataManager
     }
 
-    func fetchStarships() throws -> [Starship] {
-        let fetchRequest: NSFetchRequest<Starship> = Starship.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+    func isStarshipFavorite(id: String) -> Bool {
+        let context = coreDataManager.mainContext
 
-        return try coreDataManager.viewContext.fetch(fetchRequest)
+        let fetchRequest = StarshipFavorite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "starshipId = %@", id)
+
+        let favorites = (try? context.fetch(fetchRequest)) ?? []
+
+        return !favorites.isEmpty
     }
 
-    func fetchStarship(starshipId: String) throws -> Starship {
-        // This shouldn't be like this, but the API does not provide `id` to its objects.
-        guard let starship = try fetchStarships().first(where: { $0.id == starshipId }) else {
-            throw CoreDataError.objectNotFound
+    func markStarshipFavorite(id: String) throws {
+        let context = coreDataManager.backgroundContext
+
+        let favorite = StarshipFavorite(context: context)
+        favorite.starshipId = id
+        favorite.timestamp = Date.now
+
+        try context.save()
+    }
+
+    func unmarkStarshipFavorite(id: String) throws {
+        let context = coreDataManager.backgroundContext
+
+        let fetchRequest = StarshipFavorite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "starshipId = %@", id)
+
+        for item in try context.fetch(fetchRequest) {
+            context.delete(item)
         }
-        return starship
+
+        try context.save()
     }
 }

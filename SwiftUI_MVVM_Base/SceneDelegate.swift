@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(windowScene: windowScene)
 
-        let listView = ListView(viewModel: ListViewModel())
-        let viewController = UIHostingController(rootView: listView)
+        let mainCoordinator = MainCoordinator()
+        let viewController = UIHostingController(rootView: mainCoordinator)
 
         self.window?.rootViewController = viewController
 

@@ -1,45 +1,46 @@
 # SwiftUI MVVM Base
 
-This project aims to be a base for MVVM projects made with SwiftUI. It downloads some data from [SWAPI](https://swapi.dev) API, stores it into CoreData and presents it nicely in a SwiftUI list.
+This project aims to be a base for MVVM projects made with SwiftUI. It downloads some data from [SWAPI](https://swapi.dev) API and presents it nicely in a SwiftUI list. It also stores some information in CoreData.
+
+![Simulator screenshot](docs/simulator1.jpeg "Starships list screen")
+![Simulator screenshot](docs/simulator2.jpeg "Starship detail screen")
 
 ***
 
 ## Architecture
 
-The whole application is designed in a protocol oriented approeach so each element can be exchanged without having to change the implementation of the other parts.
+### Navigation
 
-### **Endpoints**
+The navigation is implemented using a coordinator pattern. Each coordinator (in this case only one) contains a `Router` used to power the logic of the `navigationDestination` from [NavigationStack](https://developer.apple.com/documentation/swiftui/navigationstack).
 
-Endpoints folder are meant to have the information about API endpoints. They must conform to `APIRequest` so when the network request is made by `APIClient`, it can build the proper `URLRequest`.
+Using a `NavigationDestination` struct 
 
-### **Repositories**
+> Instead of using just an enum for `NavigationDestination`, we need to provide an identifier to the route to be able to save the state of the ViewModel. If we don't store the state, we cannot reuse a view of the same type more than one time. Hence the need to use a struct.
 
-Repositories are the point of communication between the ViewModels and the Remote or Local data. Repositories have two dataSources from which they get their data.
+### View Builder
 
-#### **LocalDataSource**
+Each view contains a `Builder` that configures the ViewModel with the proper dependencies. This builder is also in charge of storing the state of each ViewModel.
 
-The LocalDataSource is where the logic to get the local data goes. In this example we are communicating with CoreData, but one could exchange it to use another database very easily.
+> We use a `NSMapTable` to avoid memory leaking the ViewModels.
 
-#### **RemoteDataSource**
+### MVVM
 
-RemoteDataSource is in charge of communicating with the API. The current implementation uses an instance of `APIClient` but it could be exchanged for anything else.
+The app is using an MVVM architecture pattern where all of the views logic happens inside the views `ViewModel`. This means we can decouple the logic (+ navigation) from the view.
 
-## Navigation
+Also using a `Configurator` for each screen allows us to configure and present this view from anywhere in the app.
 
-Right now, the navigation is implemented using the [NavigationStack](https://developer.apple.com/documentation/swiftui/navigationstack) as a core element and using `navigationDestination` to check for any changes in the Route array.
+### Protocol Oriented
 
-### Implamentation
+The app is built using a protocol oriented approach, meaning that almost all of the properties of the objects can be replaced with mocked types. This means that testing the components is very easy.
 
-Currently there is a `Route` enum that contains each possible route within the navigation.
+For example, to test the `StarshipsRepository` logic, it's very easy to create mocks for `LocalDataSourceProtocol`, `CoreDataManagerProtocol`, `RemoteDataSourceProtocol` and `APIClientProtocol`.
 
-Each ViewModel contains a Binding to the array of routes that the NavigationStack uses, so it can append and remove routes to navigate through the app.
+### Repository pattern
 
-### Warnings
+I like to use the repository pattern to put all of the API/DB related calls inside, meaning that if you want to do something related with Starships, you'll always use `StarshipsRepository`. This way, if something changes you'll only need to update/change the specific repository and not change anything else from the ViewModel.
 
-Currently the project throws the following runtime error.
-```
-Publishing changes from within view updates is not allowed, this will cause undefined behavior.
-```
-It seems to be a SwiftUI bug that I hope they fix in the next versions.
+#### Network
 
+The requests to API is very straightforward. A generic `APIClient` that makes a request to wherever `Endpoints`. The cool thing is that this APIClient is generic and decodes directly to the Model you asked for.
 
+The endpoints are very easy to use and to extend using `enums`.

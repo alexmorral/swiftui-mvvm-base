@@ -1,5 +1,5 @@
 //
-//  DetailView.swift
+//  StarshipDetailView.swift
 //  SwiftUI_MVVM_Base
 //
 //  Created by Alex Morral on 3/10/22.
@@ -7,23 +7,26 @@
 
 import SwiftUI
 
-struct DetailView: View {
-    @ObservedObject var viewModel: DetailViewModel
+struct StarshipDetailView: View {
+    @ObservedObject var viewModel: StarshipDetailViewModel
 
     var body: some View {
-        switch viewModel.viewState {
-        case .idle:
-            idleView
-        case .loading:
-            ProgressView()
-        case .error:
-            VStack {
-                Text("Error loading starship")
-                Button(action: viewModel.loadData) {
-                    Text("Try again")
+        VStack {
+            switch viewModel.viewState {
+            case .idle:
+                idleView
+            case .loading:
+                ProgressView()
+            case .error:
+                VStack {
+                    Text("Error loading starship")
+                    Button(action: viewModel.loadData) {
+                        Text("Try again")
+                    }
                 }
             }
         }
+        .navigationTitle("Starship")
     }
 
     @ViewBuilder
@@ -51,7 +54,13 @@ struct DetailView: View {
                 detailCell(leadingText: "MGLT", trailingText: viewModel.starship.mglt)
             }
         }
-        .navigationTitle(viewModel.starship.name)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: viewModel.toggleStarshipFavorite) {
+                    Image(systemName: viewModel.isStarshipFavorite ? "heart.fill" : "heart")
+                }
+            }
+        }
     }
 
     func detailCell(leadingText: String, trailingText: String) -> some View {
@@ -64,12 +73,11 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = DetailViewModel(
-            route: .constant([]),
+#Preview {
+    StarshipDetailBuilder()
+        .buildView(
+            routeIdentifier: "",
+            router: MainRouter(),
             starshipId: ""
         )
-        DetailView(viewModel: viewModel)
-    }
 }

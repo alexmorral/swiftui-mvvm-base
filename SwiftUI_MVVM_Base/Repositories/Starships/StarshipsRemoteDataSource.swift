@@ -8,45 +8,37 @@
 import Foundation
 
 protocol StarshipsRemoteDataSourceProtocol {
-    func fetchRemoteStarships() async throws
-    func fetchRemoteStarship(starshipId: String) async throws
+    func fetchRemoteStarships() async throws -> [APIStarship]
+    func fetchRemoteStarship(starshipId: String) async throws -> APIStarship
 }
 
 struct StarshipsRemoteDataSource: StarshipsRemoteDataSourceProtocol {
     private var apiClient: APIClientProtocol
-    private var coreDataManager: CoreDataManagerProtocol
 
-    init(
-        apiClient: APIClientProtocol = APIClient(),
-        coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared
-    ) {
+    init(apiClient: APIClientProtocol = APIClient()) {
         self.apiClient = apiClient
-        self.coreDataManager = coreDataManager
     }
 
-    func fetchRemoteStarships() async throws {
-        let context = coreDataManager.backgroundContext()
-        let decoder = APIParser.decoder(with: context)
+    func fetchRemoteStarships() async throws -> [APIStarship] {
+        let decoder = JSONDecoder()
 
         let apiRequest = StarshipsEndpoint.starships
 
-        let _: APIPaginatedResult<Starship> = try await apiClient.performRequest(
+        let paginatedStarships: APIPaginatedResult<APIStarship> = try await apiClient.performRequest(
             apiRequest: apiRequest,
             decoder: decoder
         )
-        coreDataManager.save(context: context)
+        return paginatedStarships.results
     }
 
-    func fetchRemoteStarship(starshipId: String) async throws {
-        let context = coreDataManager.backgroundContext()
-        let decoder = APIParser.decoder(with: context)
+    func fetchRemoteStarship(starshipId: String) async throws -> APIStarship {
+        let decoder = JSONDecoder()
 
         let apiRequest = StarshipsEndpoint.starship(starshipId)
 
-        let _: Starship = try await apiClient.performRequest(
+        return try await apiClient.performRequest(
             apiRequest: apiRequest,
             decoder: decoder
         )
-        coreDataManager.save(context: context)
     }
 }

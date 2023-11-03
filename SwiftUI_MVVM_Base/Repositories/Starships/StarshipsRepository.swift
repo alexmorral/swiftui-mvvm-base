@@ -8,8 +8,11 @@
 import Foundation
 
 protocol StarshipsRepositoryProtocol {
-    func retrieveStarships() async throws -> [Starship]
-    func retrieveStarship(starshipId: String) async throws -> Starship
+    func retrieveStarships() async throws -> [APIStarship]
+    func retrieveStarship(starshipId: String) async throws -> APIStarship
+    func isStarshipFavorite(id: String) -> Bool
+    func markStarshipFavorite(id: String) throws
+    func unmarkStarshipFavorite(id: String) throws
 }
 
 struct StarshipsRepository: StarshipsRepositoryProtocol {
@@ -24,13 +27,23 @@ struct StarshipsRepository: StarshipsRepositoryProtocol {
         self.remoteDataSource = remoteDataSource
     }
 
-    func retrieveStarships() async throws -> [Starship] {
+    func retrieveStarships() async throws -> [APIStarship] {
         try await remoteDataSource.fetchRemoteStarships()
-        return try localDataSource.fetchStarships()
     }
 
-    func retrieveStarship(starshipId: String) async throws -> Starship {
+    func retrieveStarship(starshipId: String) async throws -> APIStarship {
         try await remoteDataSource.fetchRemoteStarship(starshipId: starshipId)
-        return try localDataSource.fetchStarship(starshipId: starshipId)
+    }
+
+    func isStarshipFavorite(id: String) -> Bool {
+        localDataSource.isStarshipFavorite(id: id)
+    }
+
+    func markStarshipFavorite(id: String) throws {
+        try localDataSource.markStarshipFavorite(id: id)
+    }
+
+    func unmarkStarshipFavorite(id: String) throws {
+        try localDataSource.unmarkStarshipFavorite(id: id)
     }
 }

@@ -13,16 +13,12 @@ enum StarshipsEndpoint {
 }
 
 extension StarshipsEndpoint: APIRequest {
-    var baseURL: String {
-        "https://swapi.dev/api"
-    }
-
     var path: String {
         switch self {
         case .starships:
-            return "/starships"
+            return "starships"
         case .starship(let starshipId):
-            return "/starships/\(starshipId)"
+            return "starships/\(starshipId)"
         }
     }
 
@@ -33,10 +29,6 @@ extension StarshipsEndpoint: APIRequest {
         }
     }
 
-    var httpBody: Data? {
-        nil
-    }
-
     var isResponsePaginated: Bool {
         switch self {
         case .starships:
@@ -44,15 +36,5 @@ extension StarshipsEndpoint: APIRequest {
         default:
             return false
         }
-    }
-
-    func buildRequest() throws -> URLRequest {
-        guard let url = URL(string: "\(baseURL)\(path)") else {
-            throw APIError.badURL
-        }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = httpMethod
-        urlRequest.httpBody = httpBody
-        return urlRequest
     }
 }

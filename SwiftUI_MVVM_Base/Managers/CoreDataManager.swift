@@ -9,18 +9,11 @@ import Foundation
 import CoreData
 
 protocol CoreDataManagerProtocol {
-    var persistentContainer: NSPersistentContainer { get }
-    var viewContext: NSManagedObjectContext { get }
+    var mainContext: NSManagedObjectContext { get }
+    var backgroundContext: NSManagedObjectContext { get }
 
-    func backgroundContext(with parentContext: NSManagedObjectContext?) -> NSManagedObjectContext
-    func save(context: NSManagedObjectContext)
-    func delete(object: NSManagedObject, in context: NSManagedObjectContext)
-}
-
-extension CoreDataManagerProtocol {
-    func backgroundContext(with parentContext: NSManagedObjectContext? = nil) -> NSManagedObjectContext {
-        backgroundContext(with: parentContext)
-    }
+    func save(context: NSManagedObjectContext) throws
+    func delete(object: NSManagedObject, context: NSManagedObjectContext)
 }
 
 final class CoreDataManager: NSObject, CoreDataManagerProtocol {
@@ -40,19 +33,16 @@ final class CoreDataManager: NSObject, CoreDataManagerProtocol {
         return container
     }()
 
-    var viewContext: NSManagedObjectContext {
+    var mainContext: NSManagedObjectContext {
         let context = persistentContainer.viewContext
         context.automaticallyMergesChangesFromParent = true
         return context
     }
 
-
-    func backgroundContext(with parentContext: NSManagedObjectContext? = nil) -> NSManagedObjectContext {
+    var backgroundContext: NSManagedObjectContext {
         let context = persistentContainer.newBackgroundContext()
+        context.automaticallyMergesChangesFromParent = true
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        if let parentContext {
-            context.parent = parentContext
-        }
         return context
     }
 
@@ -69,8 +59,9 @@ final class CoreDataManager: NSObject, CoreDataManagerProtocol {
         }
     }
 
-    // MARK: - Core Data Deleting support
-    func delete(object: NSManagedObject, in context: NSManagedObjectContext) {
-        context.delete(object)
+    func delete(object: NSManagedObject, context: NSManagedObjectContext) {
+        context.performAndWait {
+            context.delete(object)
+        }
     }
 }

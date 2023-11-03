@@ -8,11 +8,15 @@
 import UIKit
 import CoreData
 
+import SwiftyBeaver
+let logger = SwiftyBeaver.self
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureSwiftyBeaver()
         return true
     }
 
@@ -30,5 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    private func configureSwiftyBeaver() {
+        // add log destinations. at least one is needed!
+        let console = ConsoleDestination()  // log to Xcode Console
+
+        // use custom format and set console output to short time, log level & message
+        console.format = "$DHH:mm:ss$d $L $M"
+        // or use this for JSON output: console.format = "$J"
+
+        // add the destinations to SwiftyBeaver
+        logger.addDestination(console)
+    }
 }
 
